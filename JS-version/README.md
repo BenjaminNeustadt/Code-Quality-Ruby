@@ -34,7 +34,8 @@ date || credit || debit || balance
 
 
 
-Planning:
+## Planning:
+
 * Will start off the TDD by implementing everything inside one class, and then extracting everything to have a separation of concerns
 * I would first like to write a test to check that the format returned is correct when we return 
 * Will use: 
@@ -69,20 +70,68 @@ Planning:
 - WILL FOCUS ON FORMATTING AFTERWARDS!
 
 
-## IMPLENTATION:
+## EXAMPLES:
 
-INPUT                       OUTPUT
-debit(400)                  date: [...], credit: undefined, debit: 400, balance: 400
+- - - - - - - - - - - - - - - - - - - - - - - -- - - -
+
+// a client makes a deposit of 1000 on 10-01-2023  
+
+date || credit || debit || balance
+10/01/2023 || 1000.00 || || 1000.00
+
+- - - - - - - - - - - - - - - - - - 
+
+// a deposit of 2000 on 13-01-2023  
+
+date || credit || debit || balance
+13/01/2023 || 2000.00 || || 3000.00
+10/01/2023 || 1000.00 || || 1000.00
+
+- - - - - - - - - - - - - - - - - - 
+
+// a withdrawal of 500 on 14-01-2023  
+
+date || credit || debit || balance
+14/01/2023 || || 500.00 || 2500.00
+13/01/2023 || 2000.00 || || 3000.00
+10/01/2023 || 1000.00 || || 1000.00
 
 
+NOTE after first test:
+
+- SHOULD FOCUS ON FORMATTING EARLY ON SO THAT THE TESTS WRITTEN NOW DO NOT NEED TO BE   redone
+
+
+new way of doing it: 
 
 
 ## RESOURCES
 
 * ways to format: 
 
+seems like the best way so far:
+https://stackoverflow.com/questions/47228227/nodejs-how-to-display-table-structured-in-console
+
+
 https://stackoverflow.com/questions/8842546/best-way-to-pretty-print-a-hash
 
 https://github.com/awesome-print/awesome_print
 
-IN
+https://www.freecodecamp.org/news/javascript-hash-table-associative-array-hashing-in-js/
+
+
+* cannot access BankBook before it is initialized error (fix):
+https://bobbyhadz.com/blog/javascript-referenceerror-cannot-access-before-initialization
+
+The problem was that you cannot call the const variable you create the same thing as the actual class instance that you are creating, as JS will get confused if you do.
+
+
+date format: 
+
+https://stackoverflow.com/questions/12409299/how-to-get-current-formatted-date-dd-mm-yyyy-in-javascript-and-append-it-to-an-i
+
+
+
+for RUBY hash iteration: 
+
+https://learn.co/lessons/hash-iteration#:~:text=When%20we%20iterate%20over%20a,manipulate%20either%20one%20or%20both.&text=Inside%20the%20iteration%20we%20have,the%20key%20and%20the%20value.
