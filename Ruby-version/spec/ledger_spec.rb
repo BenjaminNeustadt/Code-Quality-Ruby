@@ -7,6 +7,7 @@
 require_relative '../lib/ledger'
 
 describe Ledger do
+
   it 'must have a report' do
     # date  || credit  || debit  || balance
     book = Ledger.new('Joe', '11234', Time.now, 1000)
@@ -14,6 +15,7 @@ describe Ledger do
   end
 
   describe 'Report' do
+
     it 'must have date, credit, debit and balance header' do
       # date  || credit  || debit  || balance
       report = Ledger.new('Joe', '11234', Time.now, 1000)
@@ -24,6 +26,17 @@ describe Ledger do
       expect(report).to include 'credit'
       expect(report).to include 'balance'
     end
+
+  end
+
+  describe 'Credit' do
+
+    it 'must have a balance' do
+      ledger = Ledger.new('Joe', '11234', Time.now, 1000)
+
+      expect(ledger.balance).to eq 1000
+    end
+
   end
 
 end

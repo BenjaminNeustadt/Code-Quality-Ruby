@@ -1,10 +1,13 @@
 class Ledger
+
   def initialize(name, account, date, beginning_balance)
     @name = name
     @account = account
     @date = date
-    @beginning_balance = beginning_balance
+    @balance = beginning_balance
   end
+
+  attr_reader :balance
 
   def report
     <<~🍌
@@ -12,4 +15,5 @@ class Ledger
       Today ||  0 ||  50  -> 25
     🍌
   end
+
 end
