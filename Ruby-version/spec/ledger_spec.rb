@@ -57,6 +57,23 @@ describe Ledger do
       expect(balance).to eq 800
     end
 
+    it 'must give correct balance after credit/debit actions' do
+      # date  || credit  || debit  || balance
+      # 10/01/2023 || 1000.00   ||        || 1000.00
+      ledger = Ledger.new('Joe', '11234', Time.now, 1000)
+      ledger.credit(300)
+      ledger.debit(150)
+
+      balance = ledger.balance
+      expect(balance).to eq 1150
+
+      ledger.debit 300
+      ledger.credit 5
+
+      balance = ledger.balance
+      expect(balance).to eq 855
+    end
+
   end
 
 end
