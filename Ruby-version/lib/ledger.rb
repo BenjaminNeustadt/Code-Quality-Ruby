@@ -1,5 +1,9 @@
 class Ledger
 
+  private
+
+  attr_writer :balance
+
   def initialize(name, account, date, beginning_balance)
     @name = name
     @account = account
@@ -7,7 +11,17 @@ class Ledger
     @balance = beginning_balance
   end
 
+  public
+
   attr_reader :balance
+
+  def credit(amount)
+    self.balance += amount
+  end
+
+  def debit(amount)
+    self.balance -= amount
+  end
 
   def report
     <<~🍌
