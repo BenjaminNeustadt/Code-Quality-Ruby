@@ -1,5 +1,7 @@
 class Ledger
 
+  ENTRY = {date: '', credit: 0, debit: 0, balance: 0}
+
   private
 
   attr_writer :balance
@@ -7,9 +9,12 @@ class Ledger
   def initialize(date: Time.now, balance: 0)
     @date                     = date
     @balance                  = balance
-    @history                  = {date: date, credit: 0, debit: 0, balance: balance}
     credit_or_debit           = balance.positive? ? :credit : :debit
-    @history[credit_or_debit] = balance.abs
+    @history  = [] << ENTRY
+    @history.first[:credtor_or_debit] = balance.abs
+    @history.first[:date] = date
+    @history.first[:balance] = balance
+    p @history
     @debit                    = 0
     @credit                   = 0
   end

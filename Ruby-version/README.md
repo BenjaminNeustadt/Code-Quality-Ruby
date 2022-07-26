@@ -132,3 +132,9 @@ Ruby date formatting:
 
 https://entrision.com/blog/formatting-dates-in-ruby/
 
+
+https://stackoverflow.com/questions/19756139/append-key-value-pair-to-hash-with-in-ruby
+
+Ruby hash iteration: 
+
+https://learn.co/lessons/hash-iteration#:~:text=When%20we%20iterate%20over%20a,manipulate%20either%20one%20or%20both.&text=Inside%20the%20iteration%20we%20have,the%20key%20and%20the%20value
