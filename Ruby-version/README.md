@@ -122,7 +122,13 @@ date format:
 
 https://stackoverflow.com/questions/12409299/how-to-get-current-formatted-date-dd-mm-yyyy-in-javascript-and-append-it-to-an-i
 
-for RUBY hash iteration:
+for Ruby hash iteration:
 
 https://learn.co/lessons/hash-iteration#:~:text=When%20we%20iterate%20over%20a,manipulate%20either%20one%20or%20both.&text=Inside%20the%20iteration%20we%20have,the%20key%20and%20the%20value.
+
+
+
+Ruby date formatting:
+
+https://entrision.com/blog/formatting-dates-in-ruby/
 

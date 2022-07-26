@@ -4,24 +4,28 @@ class Ledger
 
   attr_writer :balance
 
-  def initialize(name, account, date, beginning_balance)
-    @date = date
-    balance = beginning_balance
-    @history = {date: date, credit: 0, debit: 0, balance: balance}
-    credit_or_debit = balance.positive? ? :credit : :debit
+  def initialize(date: Time.now, balance: 0)
+    @date                     = date
+    @balance                  = balance
+    @history                  = {date: date, credit: 0, debit: 0, balance: balance}
+    credit_or_debit           = balance.positive? ? :credit : :debit
     @history[credit_or_debit] = balance.abs
+    @debit                    = 0
+    @credit                   = 0
   end
 
   public
 
-  attr_reader :balance
+  attr_reader :balance, :credit, :debit
 
-  def credit(amount)
-    self.balance += amount
+  def credit=(amount)
+    @credit       = amount
+    self.balance += credit
   end
 
-  def debit(amount)
-    self.balance -= amount
+  def debit=(amount)
+    @debit        = amount
+    self.balance -= debit
   end
 
   def report
