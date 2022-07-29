@@ -33,6 +33,13 @@ class Ledger
     self.balance -= debit
   end
 
+  def create_entry(date: Time.now, debit: 0, credit: 0)
+    entry        = ENTRY.clone
+    entry[:date] = date
+    entry.merge!( {date: date, debit: debit, credit: credit})
+    self.history << entry
+  end
+
   def report
     <<~🍌
       date   || credit || debit || Balance
@@ -41,3 +48,5 @@ class Ledger
   end
 
 end
+
+
