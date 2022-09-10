@@ -9,7 +9,6 @@ class Transaction
   def initialize(balance: 0)
     @balance = balance
     @history = []
-    @date = Date.today.strftime('%d/%m/%Y')
   end
 
   public
@@ -18,6 +17,12 @@ class Transaction
 
   def deposit(amount)
     self.balance += amount
+    self.history << {
+      date: Date.today.strftime('%d/%m/%Y'),
+      credit: amount,
+      debit: nil,
+      balance: balance
+    }
   end
 
   def withdraw(amount)
