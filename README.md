@@ -33,4 +33,7 @@ date       || credit    || debit  || balance
 13/01/2023 || 2000.00   ||        || 3000.00
 10/01/2023 || 1000.00   ||        || 1000.00
 ```
+### Questions to consider beyond exercise
 
+Wording of the methods is important because we can debit a negative
+amount, we cannot deposit a negative amount
