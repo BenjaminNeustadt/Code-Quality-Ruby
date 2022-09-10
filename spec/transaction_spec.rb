@@ -32,4 +32,12 @@ RSpec.describe Transaction do
 
   end
 
+  describe 'date' do
+
+    it 'has the format of dd/mm/YYYY' do
+      transaction = Transaction.new
+      expect(transaction.date).to match /\d\d\/\d\d\/\d\d\d\d/
+    end
+  end
+
 end
