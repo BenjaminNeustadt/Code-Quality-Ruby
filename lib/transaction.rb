@@ -11,28 +11,26 @@ class Transaction
     @history = []
   end
 
+  def entry(balance:, debit: nil, credit: nil)
+    history << {
+      date:    Date.today.strftime('%d/%m/%Y'),
+      credit:  credit,
+      debit:   debit,
+      balance: balance
+    }
+  end
+
   public
 
   attr_reader :balance, :history, :date
 
   def deposit(amount)
-    self.balance += amount
-    history << {
-      date:    Date.today.strftime('%d/%m/%Y'),
-      credit:  amount,
-      debit:   nil,
-      balance: balance
-    }
+    entry(balance: self.balance += amount, credit: amount)
   end
 
   def withdraw(amount)
-    self.balance -= amount
-    history << {
-      date:    Date.today.strftime('%d/%m/%Y'),
-      credit:  nil,
-      debit:   amount,
-      balance: balance
-    }
+    entry(balance: self.balance -= amount, debit: amount)
   end
 
 end
+
