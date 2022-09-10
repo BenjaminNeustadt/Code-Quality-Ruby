@@ -15,6 +15,12 @@ RSpec.describe Transaction do
       expect(transaction.balance).to eq 100
     end
 
+    it 'decrements balance when amount is withdrawn' do
+      transaction = Transaction.new
+      transaction.withdraw(100)
+      expect(transaction.balance).to eq -100
+    end
+
   end
 
 end
