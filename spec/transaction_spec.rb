@@ -62,6 +62,40 @@ RSpec.describe Transaction do
       ]
     end
 
+    it 'can hold multiple transaction events' do
+      transaction = Transaction.new
+      transaction.deposit(1000)
+      transaction.withdraw(500)
+      transaction.deposit(700)
+      transaction.deposit(900)
+      expect(transaction.history).to eq [
+        {
+          date:     Date.today.strftime('%d/%m/%Y'),
+          credit:   1000,
+          debit:    nil,
+          balance:  1000
+        },
+        {
+          date:     Date.today.strftime('%d/%m/%Y'),
+          credit:   nil,
+          debit:    500,
+          balance:  500
+        },
+        {
+          date:     Date.today.strftime('%d/%m/%Y'),
+          credit:   700,
+          debit:    nil,
+          balance:  1200
+        },
+        {
+          date:     Date.today.strftime('%d/%m/%Y'),
+          credit:   900,
+          debit:    nil,
+          balance:  2100
+        }
+      ]
+    end
+
   end
 
 end
