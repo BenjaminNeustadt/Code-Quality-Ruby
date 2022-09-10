@@ -6,11 +6,12 @@ class Transaction
 
   def initialize(balance: 0)
     @balance = balance
+    @history = []
   end
 
   public
 
-  attr_reader :balance
+  attr_reader :balance, :history
 
   def deposit(amount)
     self.balance += amount

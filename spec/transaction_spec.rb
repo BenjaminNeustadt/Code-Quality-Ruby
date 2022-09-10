@@ -23,4 +23,13 @@ RSpec.describe Transaction do
 
   end
 
+  describe 'history' do
+
+    it 'initially is an empty array' do
+      transaction = Transaction.new
+      expect(transaction.history).to eq []
+    end
+
+  end
+
 end
