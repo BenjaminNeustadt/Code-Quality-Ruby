@@ -17,16 +17,22 @@ class Transaction
 
   def deposit(amount)
     self.balance += amount
-    self.history << {
-      date: Date.today.strftime('%d/%m/%Y'),
-      credit: amount,
-      debit: nil,
+    history << {
+      date:    Date.today.strftime('%d/%m/%Y'),
+      credit:  amount,
+      debit:   nil,
       balance: balance
     }
   end
 
   def withdraw(amount)
     self.balance -= amount
+    history << {
+      date:    Date.today.strftime('%d/%m/%Y'),
+      credit:  nil,
+      debit:   amount,
+      balance: balance
+    }
   end
 
 end

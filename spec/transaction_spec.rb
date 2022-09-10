@@ -30,18 +30,36 @@ RSpec.describe Transaction do
       expect(transaction.history).to eq []
     end
 
-    it 'contains the 4 properties of a transaction instance' do
-      transaction = Transaction.new
-      transaction.deposit(100)
-      expect(transaction.history).to eq [
-        {date: Date.today.strftime('%d/%m/%Y'), credit: 100, debit: nil, balance: 100}
-      ]
-    end
-
     it 'contains a date property formatted in dd/mm/YYYY' do
       transaction = Transaction.new
       transaction.deposit(100)
       expect(transaction.history.first[:date]).to match /\d\d\/\d\d\/\d\d\d\d/
+    end
+
+    it 'contains the 4 properties of a transaction instance for deposit' do
+      transaction = Transaction.new
+      transaction.deposit(100)
+      expect(transaction.history).to eq [
+        {
+          date:    Date.today.strftime('%d/%m/%Y'),
+          credit:  100,
+          debit:   nil,
+          balance: 100
+        }
+      ]
+    end
+
+    it 'contains the 4 properties of a transaction instance for withdraw' do
+      transaction = Transaction.new
+      transaction.withdraw(200)
+      expect(transaction.history).to eq [
+        {
+          date:     Date.today.strftime('%d/%m/%Y'),
+          credit:   nil,
+          debit:    200,
+          balance: -200
+        }
+      ]
     end
 
   end
