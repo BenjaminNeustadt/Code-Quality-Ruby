@@ -1,4 +1,5 @@
 require 'Date'
+require_relative 'report.rb'
 
 class Transaction
 
@@ -32,6 +33,10 @@ class Transaction
 
   def withdraw(amount)
     entry(balance: self.balance -= amount, debit: MONEY % amount)
+  end
+
+  def to_s
+    Report.new(self).report
   end
 
 end

@@ -1,5 +1,3 @@
-require_relative 'transaction'
-
 class Report
 
   def initialize(transaction)
@@ -23,5 +21,3 @@ class Report
   end
 
 end
-
-__END__
