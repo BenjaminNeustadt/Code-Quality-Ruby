@@ -2,6 +2,8 @@ require 'Date'
 
 class Transaction
 
+  MONEY = '%.2f'
+
   private
 
   attr_writer :balance
@@ -16,7 +18,7 @@ class Transaction
       date:    Date.today.strftime('%d/%m/%Y'),
       credit:  credit,
       debit:   debit,
-      balance: balance
+      balance: MONEY % balance
     }
   end
 
@@ -25,11 +27,11 @@ class Transaction
   attr_reader :balance, :history, :date
 
   def deposit(amount)
-    entry(balance: self.balance += amount, credit: amount)
+    entry(balance: self.balance += amount, credit: MONEY % amount)
   end
 
   def withdraw(amount)
-    entry(balance: self.balance -= amount, debit: amount)
+    entry(balance: self.balance -= amount, debit: MONEY % amount)
   end
 
 end

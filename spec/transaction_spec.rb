@@ -41,10 +41,10 @@ RSpec.describe Transaction do
       transaction.deposit(100)
       expect(transaction.history).to eq [
         {
-          date:    Date.today.strftime('%d/%m/%Y'),
-          credit:  100,
-          debit:   nil,
-          balance: 100
+          date:     Date.today.strftime('%d/%m/%Y'),
+          credit:  "100.00",
+          debit:    nil,
+          balance: "100.00"
         }
       ]
     end
@@ -54,10 +54,10 @@ RSpec.describe Transaction do
       transaction.withdraw(200)
       expect(transaction.history).to eq [
         {
-          date:     Date.today.strftime('%d/%m/%Y'),
-          credit:   nil,
-          debit:    200,
-          balance: -200
+          date:      Date.today.strftime('%d/%m/%Y'),
+          credit:    nil,
+          debit:    "200.00",
+          balance: "-200.00"
         }
       ]
     end
@@ -71,27 +71,27 @@ RSpec.describe Transaction do
       expect(transaction.history).to eq [
         {
           date:     Date.today.strftime('%d/%m/%Y'),
-          credit:   1000,
+          credit:   "1000.00",
           debit:    nil,
-          balance:  1000
+          balance:  "1000.00"
         },
         {
           date:     Date.today.strftime('%d/%m/%Y'),
           credit:   nil,
-          debit:    500,
-          balance:  500
+          debit:    "500.00",
+          balance:  "500.00"
         },
         {
           date:     Date.today.strftime('%d/%m/%Y'),
-          credit:   700,
+          credit:   "700.00",
           debit:    nil,
-          balance:  1200
+          balance:  "1200.00"
         },
         {
           date:     Date.today.strftime('%d/%m/%Y'),
-          credit:   900,
+          credit:   "900.00",
           debit:    nil,
-          balance:  2100
+          balance:  "2100.00"
         }
       ]
     end

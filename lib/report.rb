@@ -10,13 +10,16 @@ class Report
 
   def format_events
     transaction.history
+      .reverse
       .map { |event|
-        "#{event[:date]} || #{event[:credit]} || #{event[:debit]}|| #{event[:balance]}\n"
+         "#{event[:date]} || #{event[:credit]} || #{event[:debit]} || #{event[:balance]}"
     }
   end
 
   def report
-    "date || credit || debit || balance\n" << format_events.first.to_s
+    heading = ["date || credit || debit || balance"]
+    heading << format_events
+    heading.join("\n") << "\n"
   end
 
 end
