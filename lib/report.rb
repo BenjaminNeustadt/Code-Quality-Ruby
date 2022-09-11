@@ -1,5 +1,7 @@
 class Report
 
+  private
+
   def initialize(transaction)
     @transaction = transaction
   end
@@ -14,7 +16,9 @@ class Report
     }
   end
 
-  def report
+  public
+
+  def to_s
     heading = ["date || credit || debit || balance"]
     heading << format_events
     heading.join("\n") << "\n"

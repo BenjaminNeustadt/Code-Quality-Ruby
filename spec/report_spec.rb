@@ -5,16 +5,15 @@ RSpec.describe 'Report' do
   describe 'report' do
 
     it 'initially returns a header' do
-      ledger = Report.new(Transaction.new)
-      expect(ledger.report)
-        .to eq "date || credit || debit || balance\n\n"
+      ledger = Report.new(Transaction.new).to_s
+      expect(ledger).to eq "date || credit || debit || balance\n\n"
     end
 
     it 'has  header and single entry' do
       transaction = Transaction.new
       transaction.deposit(3000)
       date = Date.today.strftime('%d/%m/%Y')
-      actual = Report.new(transaction).report
+      actual = Report.new(transaction).to_s
       expected =
         <<~REPORT
           date || credit || debit || balance
@@ -29,7 +28,7 @@ RSpec.describe 'Report' do
       transaction.deposit(1000)
       transaction.deposit(2000)
       transaction.withdraw(500)
-      actual = Report.new(transaction).report
+      actual = Report.new(transaction).to_s
 
       date = Date.today.strftime('%d/%m/%Y')
       expected =

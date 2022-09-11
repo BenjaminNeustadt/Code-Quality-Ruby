@@ -4,14 +4,19 @@ require_relative 'report.rb'
 class Transaction
 
   MONEY = '%.2f'
+  REPORT = ->(transactions) { Report.new(transactions) }
+
+  private_constant :MONEY, :REPORT
 
   private
 
   attr_writer :balance
+  attr_reader :report
 
-  def initialize(balance: 0)
+  def initialize(balance: 0, report: REPORT)
     @balance = balance
     @history = []
+    @report = report
   end
 
   def entry(balance:, debit: nil, credit: nil)
@@ -36,7 +41,7 @@ class Transaction
   end
 
   def to_s
-    Report.new(self).report
+    report[self].to_s
   end
 
 end

@@ -96,6 +96,25 @@ RSpec.describe Transaction do
       ]
     end
 
+    it 'can be represented as a string' do
+      transaction = Transaction.new
+      transaction.deposit(1000)
+      transaction.deposit(2000)
+      transaction.withdraw(500)
+      actual = transaction.to_s
+
+      today = Date.today.strftime('%d/%m/%Y')
+      expected =
+        <<~REPORT
+          date || credit || debit || balance
+          #{today} ||  || 500.00 || 2500.00
+          #{today} || 2000.00 ||  || 3000.00
+          #{today} || 1000.00 ||  || 1000.00
+        REPORT
+
+      expect(actual).to eq expected
+    end
+
   end
 
 end
