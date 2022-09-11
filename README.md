@@ -25,14 +25,15 @@ You'll work alone, and you'll also review your own code so you can practice refl
   **And**   a deposit of 2000 on 13-01-2023
   **And**   a withdrawal of 500 on 14-01-2023
   **When**  she prints her bank statement
-  **Then**  she would see
+  **Then**  she would see:
 
 ```
-date       || credit    || debit  || balance
-14/01/2023 ||           || 500.00 || 2500.00
-13/01/2023 || 2000.00   ||        || 3000.00
-10/01/2023 || 1000.00   ||        || 1000.00
+date || credit || debit || balance
+14/01/2023 || || 500.00 || 2500.00
+13/01/2023 || 2000.00 || || 3000.00
+10/01/2023 || 1000.00 || || 1000.00
 ```
+
 ### Questions to consider beyond exercise
 
 Wording of the methods is important because we can debit a negative
